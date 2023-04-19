@@ -328,26 +328,23 @@
 <div class="content" role="main">
     
   <div>
-    <h2> Grocery list manager </h2>
+    <h2> Shopping list</h2>
     <div class="row">
         <div class="col-xs-6 col-md-4">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="enter shopping items" id="txtSearch" [(ngModel)]="item" />
                 <div class="input-group-btn">
-                  <button class="btn btn-primary" type="button" (click)="onClick()">
-                    Add
-                 </button>
+                  <button class="btn btn-primary" type="button" (click)="onClick()">Add</button>
 
-                 <button class="btn btn-primary" type="button" (click)="clear()">
-                  Clear
-               </button>
+                 <button class="btn btn-primary" type="button" (click)="clear()">Clear</button>
                 </div>
             </div>
 
             <ul class="list-group">
               <li *ngFor="let item of shoppingList" class="list-group-item">
-                  <span> {{ item.itemName }} </span>
+                  <div class="itemsDisplay" [ngStyle]="{'color': item.important? 'red' : 'black'}"> {{ item.itemName }} </div>
                   <button class="btn btn-primary" type="button" (click)="deleteItem(item.itemName)">Delete Item</button>
+                  <button class="btn btn-primary" type="button" (click)="markAsImportant(item.itemName)">Mark as Important</button>
               </li>
           </ul>
 

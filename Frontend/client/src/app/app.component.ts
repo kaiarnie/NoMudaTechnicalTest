@@ -54,6 +54,14 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+  markAsImportant(itemName: string) {
+
+    const index = this.shoppingList.findIndex(shoppingItem => shoppingItem.itemName === itemName); //Finds index is shoppingItem in array via its class property name.
+    if (this.shoppingList[index].important === true) window.alert("Item is already important"); //Alerts the users if they try to make an existing item important again
+    this.shoppingList[index].important = true; //Finds the object at index x which is the item selected on front end and sets the boolean value of important to true
+    this.shoppingList.unshift(this.shoppingList.splice(index, 1)[0]) //Adds new copy item to front of array and removes old item - thus marking it as imoportant
+    console.log(this.shoppingList)
+  }
 }
 
 //Class for ShoppingList Item
