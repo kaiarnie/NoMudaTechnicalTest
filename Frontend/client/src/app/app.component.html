@@ -309,7 +309,7 @@
     alt="Angular Logo"
     src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg=="
   />
-  <span>Welcome</span>
+  <span>Shopping List - Technical Test</span>
     <div class="spacer"></div>
     <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
       <svg id="twitter-logo" height="24" data-name="Logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
@@ -328,7 +328,7 @@
 <div class="content" role="main">
     
   <div>
-    <h2> Shopping list</h2>
+    <h2> To Buy</h2>
     <div class="row">
         <div class="col-xs-6 col-md-4">
             <div class="input-group">
@@ -342,14 +342,29 @@
 
             <ul class="list-group">
               <li *ngFor="let item of shoppingList" class="list-group-item">
-                  <div class="itemsDisplay" [ngStyle]="{'color': item.important? 'red' : 'black'}"> {{ item.itemName }} </div>
+                  <div class="itemsDisplay" [ngStyle]="{'color': item.important? 'red' : 'black'}"> {{ "Item Name: " + item.itemName }} {{" | " + " Important Status: " + item.important}} </div>
                   <button class="btn btn-primary" type="button" (click)="deleteItem(item.itemName)">Delete Item</button>
                   <button class="btn btn-primary" type="button" (click)="markAsImportant(item.itemName)">Mark as Important</button>
+                  <button class="btn btn-primary" type="button" (click)="moveItemToPreviouslyBought(item.itemName)">Move to Previously Bought</button>
               </li>
           </ul>
 
         </div>
     </div>
+</div>
+
+<div> 
+  <h2> Prevoiusly bought list</h2>
+  <button class="btn btn-primary" type="button" (click)="clearArray()">Clear</button>
+  <div class="row">
+      <div class="col-xs-6 col-md-4">
+          <ul class="list-group">
+            <li *ngFor="let previouslyBoughtItem of previouslyBoughtshoppingList" class="list-group-item">
+                <div class="itemsDisplay"> {{  "Item Name: " + previouslyBoughtItem.itemName }} {{" | " + " Important Status: " + previouslyBoughtItem.important}} </div>
+            </li>
+        </ul>
+      </div>
+  </div>
 </div>
 
 </div>
